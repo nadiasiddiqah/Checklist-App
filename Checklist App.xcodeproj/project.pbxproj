@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0996A08C251E7CF900304879 /* Checklist_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996A08B251E7CF900304879 /* Checklist_AppApp.swift */; };
+		0996A08C251E7CF900304879 /* Checklist_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996A08B251E7CF900304879 /* Checklist_App.swift */; };
 		0996A08E251E7CF900304879 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996A08D251E7CF900304879 /* ContentView.swift */; };
 		0996A090251E7CFB00304879 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0996A08F251E7CFB00304879 /* Assets.xcassets */; };
 		0996A093251E7CFB00304879 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0996A092251E7CFB00304879 /* Preview Assets.xcassets */; };
@@ -15,7 +15,7 @@
 
 /* Begin PBXFileReference section */
 		0996A088251E7CF800304879 /* Checklist App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Checklist App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0996A08B251E7CF900304879 /* Checklist_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist_AppApp.swift; sourceTree = "<group>"; };
+		0996A08B251E7CF900304879 /* Checklist_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist_App.swift; sourceTree = "<group>"; };
 		0996A08D251E7CF900304879 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0996A08F251E7CFB00304879 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0996A092251E7CFB00304879 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		0996A08A251E7CF800304879 /* Checklist App */ = {
 			isa = PBXGroup;
 			children = (
-				0996A08B251E7CF900304879 /* Checklist_AppApp.swift */,
+				0996A08B251E7CF900304879 /* Checklist_App.swift */,
 				0996A08D251E7CF900304879 /* ContentView.swift */,
 				0996A08F251E7CFB00304879 /* Assets.xcassets */,
 				0996A094251E7CFB00304879 /* Info.plist */,
@@ -139,7 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0996A08E251E7CF900304879 /* ContentView.swift in Sources */,
-				0996A08C251E7CF900304879 /* Checklist_AppApp.swift in Sources */,
+				0996A08C251E7CF900304879 /* Checklist_App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

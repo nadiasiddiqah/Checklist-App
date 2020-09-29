@@ -7,21 +7,44 @@
 
 import SwiftUI
 
+struct ChecklistItem: Identifiable {
+    let id = UUID()
+    var name: String
+    var isChecked: Bool = false
+}
+
 struct ContentView: View {
+    
+    // PROPERTIES
+    // ==========
 
     @State var checklistItems = [
-        "Fold clothes",
-        "Pack for the weekend",
-        "Move boxes to car",
-        "Full body workout",
-        "Start building Checklist app",     /// add comma to end of array to make it easy to update
+        ChecklistItem(name: "Fold clothes", isChecked: true),
+        ChecklistItem(name: "Pack for day"),
+        ChecklistItem(name: "Send email to Nikhil"),
+        ChecklistItem(name: "Eat lunch"),
+        ChecklistItem(name: "Pick up green onions", isChecked: true),     /// add comma to end of array to make it easy to update
     ]
 
+    // USER INTERFACE CONTENT + LAYOUT
     var body: some View {
         NavigationView {
             List {
-                ForEach(checklistItems, id: \.self) { item in
-                    Text(item)
+                ForEach(checklistItems) { checklistItem in
+                    HStack {
+                        Text(checklistItem.name)
+                        Spacer()
+                        Text(checklistItem.isChecked ? "✅" : "🔲")
+                    }
+                    .background(Color.white)        // This makes entire row clickable (def trans rows != clickable)
+                    .onTapGesture {
+                        // $0 = shorthand for first parameter of checklistItems array
+                        // firstIndex(where:) finds checklistItems whose id matches id of tapped item (checklistItem)
+                        if let matchingIndex = self.checklistItems.firstIndex(where: { $0.id == checklistItem.id }) {
+                            self.checklistItems[matchingIndex].isChecked.toggle()
+                        }
+                        self.printChecklistContents()
+                    }
                 }
                 .onDelete(perform: deleteListItem)      // enables swipe-to-delete gesture
                 .onMove(perform: moveListItem)          // enables move gesture
@@ -33,28 +56,40 @@ struct ContentView: View {
             }
         }
     }
-    // Method to print checklist in debug log
+    
+    // METHODS
+    // =======
+    
+    // To print checklist in debug log
     func printChecklistContents() {
         for item in checklistItems {
             print(item)
         }
     }
-    // Method to remove item in checklist
-    func deleteListItem(whichElement: IndexSet) {       // IndexSet = index position of item swiped on
+    // To remove item in checklist
+    // IndexSet = index position of item swiped on
+    func deleteListItem(whichElement: IndexSet) {
         checklistItems.remove(atOffsets: whichElement)      // deletes IndexSet
         printChecklistContents()
     }
-    // Method to move item in checklist
-    func moveListItem(whichElement: IndexSet, destination: Int) {       // whichElement = current position
-        checklistItems.move(fromOffsets: whichElement, toOffset: destination)       // destination = position moved to
+    // To move item in checklist
+    // whichElement = current position + destination = position moved to
+    func moveListItem(whichElement: IndexSet, destination: Int) {
+        checklistItems.move(fromOffsets: whichElement, toOffset: destination)
         printChecklistContents()
     }
 }
+// IndexSet = index position of item swiped on
+// whichElement = current position
 
-
+// PREVIEW
+// =======
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+        }
     }
 }
