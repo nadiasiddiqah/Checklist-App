@@ -8,10 +8,11 @@
 import SwiftUI
 
 @main
-struct Checklist_AppApp: App {
+struct Checklist_App: App {
     var body: some Scene {
+        // SwiftUI view that outlines the scenes (window contents) of your app
         WindowGroup {
-            ContentView()
+            EditChecklistItemView()     // shows app's first screen
         }
     }
 }
