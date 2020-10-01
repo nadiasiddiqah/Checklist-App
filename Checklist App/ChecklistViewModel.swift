@@ -34,12 +34,14 @@ class ChecklistViewModel: ObservableObject {
         }
         print("==========")
     }
+    
     // To remove item in checklist
     // IndexSet = index position of item swiped on
     func deleteListItem(whichElement: IndexSet) {
         items.remove(atOffsets: whichElement)      // deletes IndexSet
         printChecklistContents()
     }
+    
     // To move item in checklist
     // whichElement = current position + destination = position moved to
     func moveListItem(whichElement: IndexSet, destination: Int) {

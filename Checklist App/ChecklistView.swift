@@ -12,19 +12,21 @@ struct ChecklistView: View {
     // PROPERTIES
     // ==========
     
-    // @ObservedObject connects ChecklistView + ChecklistViewModel()
-    // @ObservedObject keeps View up-dated on changes to @Published properties in ViewModel
-    // checklistObserver var (array) stores instance of ChecklistViewModel + observes it
-    @ObservedObject var checklistObserver = ChecklistViewModel()
+    // ChecklistView's @ObservedObject prop observes changes in ChecklistViewModel's @Published props
+    // mainChecklist var (array) stores/observes instance of ChecklistViewModel
+    @ObservedObject var mainChecklist = ChecklistViewModel()
+    
+    // Hides "Add item" pop-up
+    @State var newChecklistItemViewIsVisible = false
     
     // USER INTERFACE CONTENT + LAYOUT
         // items = references properties of ChecklistViewModel
-        // Insert checklistObserver.items (bc items = checklistObserver object's prop)
-        // Add checklistObserver reference to all methods - printChecklistContents(), deleteListItem(), moveListItem()
+        // Insert mainChecklist.items (bc items = mainChecklist object's prop)
+        // Add mainChecklist reference to all methods - printChecklistContents(), deleteListItem(), moveListItem()
     var body: some View {
         NavigationView {
             List {
-                ForEach(checklistObserver.items) { item in
+                ForEach(mainChecklist.items) { item in
                     HStack {
                         Text(item.name)
                         Spacer()
@@ -34,24 +36,34 @@ struct ChecklistView: View {
                     .onTapGesture {
                         // $0 = shorthand for first parameter of items array
                         // firstIndex(where:) finds items whose id matches id of tapped item (checklistItem)
-                        if let matchingIndex = self.checklistObserver.items.firstIndex(where: { $0.id == item.id }) {
-                            self.checklistObserver.items[matchingIndex].isChecked.toggle()
+                        if let matchingIndex = self.mainChecklist.items.firstIndex(where: { $0.id == item.id }) {
+                            self.mainChecklist.items[matchingIndex].isChecked.toggle()
                         }
-                        self.checklistObserver.printChecklistContents()
+                        self.mainChecklist.printChecklistContents()
                     }
                 }
-                .onDelete(perform: checklistObserver.deleteListItem)      // enables swipe-to-delete gesture
-                .onMove(perform: checklistObserver.moveListItem)          // enables move gesture
+                .onDelete(perform: mainChecklist.deleteListItem)      // enables swipe-to-delete gesture
+                .onMove(perform: mainChecklist.moveListItem)          // enables move gesture
             }
-            .navigationBarItems(trailing: EditButton())     // adds edit button method to trailing side of NavigationBar
-            .navigationTitle("Checklist")
+            .navigationBarItems(
+                leading: Button(action: {self.newChecklistItemViewIsVisible = true}) {      // adds "add item" button
+                    HStack {
+                        Image(systemName: "plus.circle.fill")
+                        Text("Add item")
+                    }
+                },
+                trailing: EditButton()      // adds edit button
+            )
+            .navigationBarTitle("Checklist", displayMode: .inline)
             .onAppear() {       // standard view method to execute code when list first appears
-                self.checklistObserver.printChecklistContents()
+                self.mainChecklist.printChecklistContents()
             }
+        }
+        .sheet(isPresented: $newChecklistItemViewIsVisible) {     // displays isPresented parameter if true
+            NewChecklistItemView(newChecklist: self.mainChecklist)      // newChecklist has access to mainChecklist data in ChecklistView 
         }
     }
 }
-
 
 // PREVIEW
 // =======
@@ -64,3 +76,4 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
+

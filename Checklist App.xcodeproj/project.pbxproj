@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		090B807F25251EAE00C9C370 /* EditChecklistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B807E25251EAE00C9C370 /* EditChecklistItemView.swift */; };
+		090B80892525361E00C9C370 /* NewChecklistItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090B80882525361E00C9C370 /* NewChecklistItemView.swift */; };
 		0996A08C251E7CF900304879 /* Checklist_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996A08B251E7CF900304879 /* Checklist_App.swift */; };
 		0996A08E251E7CF900304879 /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0996A08D251E7CF900304879 /* ChecklistView.swift */; };
 		0996A090251E7CFB00304879 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0996A08F251E7CFB00304879 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		090B807E25251EAE00C9C370 /* EditChecklistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChecklistItemView.swift; sourceTree = "<group>"; };
+		090B80882525361E00C9C370 /* NewChecklistItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChecklistItemView.swift; sourceTree = "<group>"; };
 		0996A088251E7CF800304879 /* Checklist App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Checklist App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0996A08B251E7CF900304879 /* Checklist_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist_App.swift; sourceTree = "<group>"; };
 		0996A08D251E7CF900304879 /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				09EAFF7B2523E8DA003196B7 /* ChecklistItemModel.swift */,
 				09EAFF7F2523E987003196B7 /* ChecklistViewModel.swift */,
 				090B807E25251EAE00C9C370 /* EditChecklistItemView.swift */,
+				090B80882525361E00C9C370 /* NewChecklistItemView.swift */,
 			);
 			path = "Checklist App";
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0996A08E251E7CF900304879 /* ChecklistView.swift in Sources */,
+				090B80892525361E00C9C370 /* NewChecklistItemView.swift in Sources */,
 				09EAFF802523E987003196B7 /* ChecklistViewModel.swift in Sources */,
 				09EAFF7C2523E8DA003196B7 /* ChecklistItemModel.swift in Sources */,
 				0996A08C251E7CF900304879 /* Checklist_App.swift in Sources */,

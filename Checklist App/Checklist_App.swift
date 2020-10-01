@@ -12,7 +12,7 @@ struct Checklist_App: App {
     var body: some Scene {
         // SwiftUI view that outlines the scenes (window contents) of your app
         WindowGroup {
-            EditChecklistItemView()     // shows app's first screen
+            ChecklistView()     // shows app's first screen
         }
     }
 }
