@@ -26,21 +26,8 @@ struct ChecklistView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(mainChecklist.items) { item in
-                    HStack {
-                        Text(item.name)
-                        Spacer()
-                        Text(item.isChecked ? "✅" : "🔲")
-                    }
-                    .background(Color.white)        // This makes entire row clickable (def trans rows != clickable)
-                    .onTapGesture {
-                        // $0 = shorthand for first parameter of items array
-                        // firstIndex(where:) finds items whose id matches id of tapped item (checklistItem)
-                        if let matchingIndex = self.mainChecklist.items.firstIndex(where: { $0.id == item.id }) {
-                            self.mainChecklist.items[matchingIndex].isChecked.toggle()
-                        }
-                        self.mainChecklist.printChecklistContents()
-                    }
+                ForEach(mainChecklist.items) { index in         // RowView defines instance for each item in mainChecklist
+                    RowView(checklistItem: self.$mainChecklist.items[index])       // Use of extension to pass binding to each item to RowView
                 }
                 .onDelete(perform: mainChecklist.deleteListItem)      // enables swipe-to-delete gesture
                 .onMove(perform: mainChecklist.moveListItem)          // enables move gesture

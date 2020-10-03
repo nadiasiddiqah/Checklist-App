@@ -2,19 +2,30 @@
 //  EditChecklistItemView.swift
 //  Checklist App
 //
-//  Created by Nadia Siddiqah on 9/30/20.
+//  Created by Nadia Siddiqah on 10/1/20.
 //
 
 import SwiftUI
 
 struct EditChecklistItemView: View {
+    
+    // editChecklist stores ChecklistItemModel instances
+    // allows editChecklist to access its properties (name + isChecked)
+    // @Binding allows binding of checklist items to editChecklist (instead of passing copy)
+    @Binding var editChecklist: ChecklistItemModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Form {
+                TextField("Name", text: $editChecklist.name)
+                Toggle("Completed", isOn: $editChecklist.isChecked)
+            }
+        }
     }
 }
 
 struct EditChecklistItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ChecklistView()
+        EditChecklistItemView(editChecklist: .constant(ChecklistItemModel(name: "Sample item")))
     }
 }

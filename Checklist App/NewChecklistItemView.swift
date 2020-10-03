@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NewChecklistItemView: View {
     
+    // @Environment marks props that can access system settings related to op environ
+    // presentationMode var stores presentationMode setting (has method to dismiss current view)
     @Environment(\.presentationMode) var presentationMode
     
     // Property to store ChecklistViewModel instances
@@ -41,7 +43,7 @@ struct NewChecklistItemView: View {
     }
     // Method to add list item when "Add new item" button is pressed
     func addListItem() {
-        var newChecklistItem = ChecklistItemModel(name: self.newItemName)
+        let newChecklistItem = ChecklistItemModel(name: self.newItemName)
         self.newChecklist.items.append(newChecklistItem)        // newChecklist = provides access to ChecklistViewModel's items
         self.newChecklist.printChecklistContents()              // ..newChecklistItem is appended into items
         self.presentationMode.wrappedValue.dismiss()            // use presentationMode's wrappedValue's dismiss method
@@ -52,7 +54,7 @@ struct NewChecklistItemView: View {
 struct NewChecklistItemView_Previews: PreviewProvider {
     static var previews: some View {
         // NewChecklistItemView has a newChecklist parameter
-        // newChecklist access its values using an instance of ChecklistViewModel (aka mainChecklist)
+        // newChecklist access its values using an instance of ChecklistViewModel (aka checklist)
         NewChecklistItemView(newChecklist: ChecklistViewModel())
     }
 }

@@ -1,8 +1,8 @@
 //
-//  ChecklistItem.swift
+//  ChecklistItemModel.swift
 //  Checklist App
 //
-//  Created by Nadia Siddiqah on 9/29/20.
+//  Created by Nadia Siddiqah on 10/1/20.
 //
 
 import Foundation
