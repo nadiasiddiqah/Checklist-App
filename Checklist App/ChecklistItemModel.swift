@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChecklistItemModel: Identifiable {
+struct ChecklistItemModel: Identifiable, Codable {
     let id = UUID()
     var name: String
     var isChecked: Bool = false

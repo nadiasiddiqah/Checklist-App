@@ -44,6 +44,7 @@ struct ChecklistView: View {
             .navigationBarTitle("Checklist", displayMode: .inline)
             .onAppear() {       // standard view method to execute code when list first appears
                 self.mainChecklist.printChecklistContents()
+                self.mainChecklist.saveListItems()
             }
         }
         .sheet(isPresented: $newChecklistItemViewIsVisible) {     // displays isPresented parameter if true

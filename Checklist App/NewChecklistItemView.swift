@@ -46,6 +46,7 @@ struct NewChecklistItemView: View {
         let newChecklistItem = ChecklistItemModel(name: self.newItemName)
         self.newChecklist.items.append(newChecklistItem)        // newChecklist = provides access to ChecklistViewModel's items
         self.newChecklist.printChecklistContents()              // ..newChecklistItem is appended into items
+        self.newChecklist.saveListItems()
         self.presentationMode.wrappedValue.dismiss()            // use presentationMode's wrappedValue's dismiss method
                                                                 // ..to dismiss NewChecklistItemView (current view after newChecklistItem is appended)
     }
